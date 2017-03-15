@@ -1,0 +1,15 @@
+{
+  "books":[
+    "book1":{
+      "lessons":[
+        {
+          "number":"1",
+          "characters":[
+            "你"
+          ]
+        }
+      ]
+    },
+    "book2":{}
+  ]
+}
