@@ -93,17 +93,22 @@ function quizLoad(){
       window.history.back();
     }
 
-    //Build the audio file names
-    var fileName1 = book + lesson + fileEnding + ".mp3";
-    var fileName2 = book + lesson + fileEnding + "1.mp3";
-    var fileName3 = book + lesson + fileEnding + "2.mp3";
-    var fileName4 = book + lesson + fileEnding + "3.mp3";
+    for(var i = 0; i < 4; i++){
+      var fileName = book + lesson + fileEnding;
+      if(i != 0){
+        fileName = fileName + i.toString();
+      }
+      fileName = fileName + ".mp3";
+      var src = "/audio/" + book + "/" + lesson + "/" + lesson + word + "/" + fileName;
+      var toApp = `<audio controls>
+                     <source src="` + src + `" type="audio/mpeg">
+                     Your browser does not support the audio element.
+                   </audio>`;
 
-    //Build the paths to the audio files
-    var src1 = "/audio/" + book + "/" + lesson + "/" + lesson + word + "/" fileName1;
-    var src2 = "/audio/" + book + "/" + lesson + "/" + lesson + word + "/" fileName2;
-    var src3 = "/audio/" + book + "/" + lesson + "/" + lesson + word + "/" fileName3;
-    var src4 = "/audio/" + book + "/" + lesson + "/" + lesson + word + "/" fileName4;
+      var appElement = "#audio" + i.toString();
+      $(appElement).append(toApp);
+
+    }
 
   }else{//Something went wrong with the global variables
     window.alert("Couldn't find the audio files!");
@@ -113,4 +118,5 @@ function quizLoad(){
 
 $(document).ready(function(){
   pageLoad();
+  quizLoad();
 });
