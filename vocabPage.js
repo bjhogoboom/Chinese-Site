@@ -73,6 +73,29 @@ function infoCheck(){
       && typeof book != "undefined";
 }
 
+
+// Function used to shuffle an array.
+// Source: http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+//Load the quiz onto the page
 function quizLoad(){
 
   //Check that all the global variables are set
@@ -92,7 +115,7 @@ function quizLoad(){
       window.alert("Couldn't find the right book");
       window.history.back();
     }
-
+    var audioElementArray = [];
     for(var i = 0; i < 4; i++){
       var fileName = book + lesson + fileEnding;
       if(i != 0){
@@ -100,14 +123,19 @@ function quizLoad(){
       }
       fileName = fileName + ".mp3";
       var src = "/audio/" + book + "/" + lesson + "/" + lesson + word + "/" + fileName;
-      var toApp = `<audio controls>
+      var toPush = `<audio controls>
                      <source src="` + src + `" type="audio/mpeg">
                      Your browser does not support the audio element.
                    </audio>`;
+      audioElementArray.push([toPush,fileName]);
+    }
 
+    audioElementArray = shuffle(audioElementArray);
+
+    for(var i = 0; i < 4; i++){
       var appElement = "#audio" + i.toString();
-      $(appElement).append(toApp);
-
+      $("#input" + i.toString()).val(audioElementArray[i][1]);
+      $(appElement).append(audioElementArray[i][0]);
     }
 
   }else{//Something went wrong with the global variables
@@ -115,6 +143,25 @@ function quizLoad(){
     window.history.back();
   }
 }
+
+function checkAnswer(){
+  var radioValue = $("input[name='audio']:checked").val();
+  if(typeof radioValue === "undefined"){
+    window.alert("Please pick an answer");
+    return;
+  }else{
+    var reg = new RegExp('^[0-9]$');
+    if(!reg.test(radioValue.charAt(radioValue.length - 5))){
+      window.alert("Correct!");
+    }else{
+      window.alert("Incorrect!");
+    }
+  }
+
+  window.alert("VALUE: " + radioValue.charAt(radioValue.length - 5));
+  //if(radioValue.substring(radioValue.length - 4))
+}
+
 
 $(document).ready(function(){
   pageLoad();

@@ -42,12 +42,23 @@
           </p>
           <ul style="list-style-type:none;text-align:center">
             <form>
-              <li id="audio0"><input type="radio" name="audio" style="vertical-align:super"></li>
-              <li id="audio1"><input type="radio" name="audio" style="vertical-align:super"></li>
-              <li id="audio2"><input type="radio" name="audio" style="vertical-align:super"></li>
-              <li id="audio3"><input type="radio" name="audio" style="vertical-align:super"></li>
+              <li id="audio0"><input type="radio" name="audio" id="input0" style="vertical-align:super"></li>
+              <li id="audio1"><input type="radio" name="audio" id="input1" style="vertical-align:super"></li>
+              <li id="audio2"><input type="radio" name="audio" id="input2" style="vertical-align:super"></li>
+              <li id="audio3"><input type="radio" name="audio" id="input3" style="vertical-align:super"></li>
             </form>
           </ul>
+          <div class="row">
+            <div class="col-sm-4">
+              <button class="btn btn-warning pull-left">Go back</button>
+            </div>
+            <div class="col-sm-4">
+              <button class="btn btn-info center-block">Randomize</button>
+            </div>
+            <div class="col-sm-4">
+              <button class="btn btn-success pull-right" onclick="checkAnswer()">Submit</button>
+            </div>
+          </div>
         </div>
         <div class="col-md-3">
         </div>
