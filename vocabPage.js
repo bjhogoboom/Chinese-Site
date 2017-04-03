@@ -145,7 +145,8 @@ function quizLoad(){
 }
 
 function checkAnswer(){
-  var radioValue = $("input[name='audio']:checked").val();
+  var checked = $("input[name='audio']:checked");
+  var radioValue = checked.val();
   if(typeof radioValue === "undefined"){
     window.alert("Please pick an answer");
     return;
@@ -156,12 +157,40 @@ function checkAnswer(){
     }else{
       window.alert("Incorrect!");
     }
+    $(".glyphicon").remove();
+    displayAnswers();
   }
-
-  window.alert("VALUE: " + radioValue.charAt(radioValue.length - 5));
-  //if(radioValue.substring(radioValue.length - 4))
 }
 
+function displayAnswers(){
+  var reg = new RegExp('^[0-9]$');
+  var inputs= $("input[name='audio']");
+  for(var i = 0; i < inputs.length; i++){
+    var inputVal = inputs[i].value;
+    if(reg.test(inputVal.charAt(inputVal.length - 5))){
+      $(inputs[i].parentElement).append(`<span class="glyphicon glyphicon-remove"
+                                        style="vertical-align:super"></span>`);
+    }else{
+      $(inputs[i].parentElement).append(`<span class="glyphicon glyphicon-ok"
+                                        style="vertical-align:super"></span>`);
+    }
+  }
+  $("#buttonRow").html(`<div class="col-sm-4">
+                        </div>
+                        <div class="col-sm-4">
+                          <button class="btn btn-info center-block" onclick="location.reload();">
+                            Retry
+                          </button>
+                        </div>
+                        <div class="col-sm-4">
+                        </div>`)
+
+
+}
+
+function returnToLesson(){
+  window.location.pathname = "/vocab/" + book + "/" + lesson + "/lesson" + lesson + ".html";
+}
 
 $(document).ready(function(){
   pageLoad();
