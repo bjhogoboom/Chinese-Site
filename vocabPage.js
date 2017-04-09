@@ -5,22 +5,7 @@
 */
 
 //Information about the vocab
-var vocabObj =
-{
-  "ICL1":{
-      "lessons":[
-        {
-          "characters":[
-            "你"
-          ],
-          "fileEndings":[
-            "n"
-          ]
-        }
-      ]
-    },
-  "ICL2":{}
-};
+var vocabObj;
 
 //Info About the quiz word
 var pathname;
@@ -193,6 +178,12 @@ function returnToLesson(){
 }
 
 $(document).ready(function(){
-  pageLoad();
-  quizLoad();
+
+  //Fetch data from the vocab file
+  $.getJSON( "/answers.json", function( data ) {
+    vocabObj = data;
+    pageLoad();
+    quizLoad();
+  });
+
 });
