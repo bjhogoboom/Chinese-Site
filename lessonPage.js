@@ -1,8 +1,4 @@
-<td>你</td>
-<td>pr</td>
-<td>
-  <a href="/vocab/ICL1/01/001.html"> Pronunciation Quiz </a>
-</td>
+
 //Info About the quiz word
 var pathname;
 var pathArr;
@@ -19,13 +15,37 @@ function pageLoad(){
   lesson = pathArr[3];
 
   if(infoCheck()){//Global variables are set
+
+    //Update title of the page and the table
+    $("#pageTitle").append(lesson);
+    $("#tableTitle").append("Lesson " + lesson + " Vocabulary");
+
     //Get numerical versions of the lesson and word numbers for JSON parsing
     var lessonNum = parseInt(pathArr[3], 10) - 1;
 
+    var lessonObj;
+    var characterNum;
+    var character;
+    var partOfSpeech;
+    var link;
+
     //Get the vocab word from the correct book
     if(book === "ICL1"){//Book 1
-      for(var i = 0; i < lessons[lessonNum].length)
-      character = vocabObj.ICL1.lessons[lessonNum].characters[wordNum];
+      lessonObj = vocabObj.ICL1.lessons[lessonNum];
+      for(var i = 0; i < lessonObj.characters.length; i++){
+        character = lessonObj.characters[i];
+
+        if(Math.floor(i/10) == 0){
+          characterNum = "00" + (i + 1).toString();
+        }else{
+          characterNum = "0" + (i + 1).toString();
+        }
+
+        partOfSpeech = lessonObj.partsOfSpeech[i];
+
+        link = "/vocab/ICL1/" + lesson + "/" + characterNum + ".html";
+        buildRow((i+1).toString(),character, characterNum, partOfSpeech, link);
+      }
     }
     else if(book === "ICL2"){//Book 2
       character = vocabObj.ICL2.lessons[lessonNum].characters[wordNum];
@@ -35,7 +55,7 @@ function pageLoad(){
     }
 
     //Load the character into the page
-    $("#title").append(character);
+
     $("#question").append(character + "?");
 
   }else{//Something went wrong with the global variables
@@ -44,30 +64,25 @@ function pageLoad(){
   }
 }
 
-function buildRow(character, partOfSpeech, link){
-
-  <td>你</td>
-  <td>pr</td>
-  <td>
-    <a href="/vocab/ICL1/01/001.html"> Pronunciation Quiz </a>
-  </td>
-  $("#lessonBody").append("
-  ")
+function buildRow(num, character, characterNum, partOfSpeech, link){
+  var data1 = "<td>" + num + "</td>";
+  var data2 = "<td>" + character + "</td>";
+  var data3 = "<td>" + partOfSpeech + "</td>";
+  var data4 = `<td><a href="`+ link + `"> ` + character + ` Pronunciation Quiz </a></td>`;
+  var row = "<tr>" + data1 + data2 + data3 + data4 + "</tr>";
+  $("#lessonBody").append(row);
 }
 //Checks to make sure that global variables are set
 function infoCheck(){
   return typeof lesson != "undefined"
-      && typeof word != "undefined"
       && typeof book != "undefined";
 }
 
 $(document).ready(function(){
-
   //Fetch data from the vocab file
   $.getJSON( "/answers.json", function( data ) {
     vocabObj = data;
     pageLoad();
-    quizLoad();
   });
 
 });
