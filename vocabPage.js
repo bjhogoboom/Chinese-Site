@@ -43,7 +43,7 @@ function pageLoad(){
 
     //Load the character into the page
     $("#title").append(character);
-    $("#question").append(character + "?");
+    $("#question").append("<br>" + character + "?");
 
   }else{//Something went wrong with the global variables
     window.alert("Check to make sure the pathname is correct");
@@ -187,73 +187,3 @@ $(document).ready(function(){
   });
 
 });
-
-
-
-
-/*
-
-{
-  "characters":[
-    "那","的","照片","这","爸爸",
-    "妈妈","个","女","孩子","谁",
-    "她","姐姐","男","弟弟","他",
-    "大哥","没","家","几","口",
-    "哥哥","两","妹妹","和",
-    "大姐","二姐","做",
-    "工作","律师","英文",
-    "都","大学生","大学",
-    "医生"
-  ],
-  "partsOfSpeech":[
-    "pr","p","n","pr","n","n",
-    "m","adj","n","qpr","pr","n",
-    "adj","n","pr","n","n","v",
-    "n","adv","n","nu","m","n",
-    "nu","n","conj","n","n","v",
-    "n","n","n","adv","n","n",
-    "n"
-  ],
-  "fileEndings":[
-    "n","d","zp","z","bb","mm",
-    "g","n","hz","s","t","jj",
-    "n","dd","t","dg","ez","y",
-    "ne","m","j","j","k","g",
-    "l","mm","h","dj","ej","z",
-    "gz","ls","yw","d","dxs","dx",
-    "ys"
-  ]
-},
-{
-  "characters":[
-    "九月","月","十二","号","星期","星期四",
-    "天""生日""生""日""今年""年",
-    "多","大","十八","岁","吃","饭",
-    "怎么样","太...了","谢谢",
-    "喜欢","菜","还是","可是","我们""点",
-    "半","晚上","见","再见","再","英国",
-    "现在","刻","事（儿）","今天","很","忙",
-    "明天","晚饭","为什么",
-    "为","因为","还","同学","认识","朋友"
-  ],
-  "partOfSpeech":[
-    "n","n","nu","m","n","n",
-    "n","n","v","n","t","n",
-    "adv","adj","nu","n","v","n",
-    "qpr","exp","v","v","n","conj",
-    "conj","pr","m","nu","t/n","v",
-    "v","adv","n","t","m","n",
-    "t","adv","adj","t","n","qpr",
-    "prep","conj","adv"
-  ],
-  "fileEndings":[
-    "jy","y","se","h","xq","xqs",
-    "t","sr","s","r","jn","n","d",
-    "d","sb","s","c","f","zmy","tl","xx",
-    "xh","c","hs","ks","wm","d","b","ws",
-    "j","zj","z","yg","xz","k","s",
-    "jt","h","m","mt","wf","wsm","w","yw","h",
-    "tx","rs","py"
-  ]
-}
-*/

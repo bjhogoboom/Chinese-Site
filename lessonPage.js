@@ -35,7 +35,7 @@ function pageLoad(){
       for(var i = 0; i < lessonObj.characters.length; i++){
         character = lessonObj.characters[i];
 
-        if(Math.floor(i/10) == 0){
+        if(i < 9){
           characterNum = "00" + (i + 1).toString();
         }else{
           characterNum = "0" + (i + 1).toString();
@@ -76,6 +76,10 @@ function buildRow(num, character, characterNum, partOfSpeech, link){
 function infoCheck(){
   return typeof lesson != "undefined"
       && typeof book != "undefined";
+}
+
+function returnToList(){
+  window.location.pathname = "/vocab/" + book + ".html";
 }
 
 $(document).ready(function(){
