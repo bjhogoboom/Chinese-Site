@@ -83,6 +83,7 @@ function shuffle(array) {
 //Load the quiz onto the page
 function quizLoad(){
 
+
   //Check that all the global variables are set
   if(infoCheck()){
 
@@ -95,7 +96,7 @@ function quizLoad(){
       var fileEnding = vocabObj.ICL1.lessons[lessonNum].fileEndings[wordNum];
     }
     else if(book === "ICL2"){//Book 2
-
+      var fileEnding = vocabObj.ICL2.lessons[lessonNum].fileEndings[wordNum];
     }else{//Something went wrong with the book name
       window.alert("Couldn't find the right book");
       window.history.back();

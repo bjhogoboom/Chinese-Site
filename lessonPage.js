@@ -48,7 +48,21 @@ function pageLoad(){
       }
     }
     else if(book === "ICL2"){//Book 2
-      character = vocabObj.ICL2.lessons[lessonNum].characters[wordNum];
+      lessonObj = vocabObj.ICL2.lessons[lessonNum];
+      for(var i = 0; i < lessonObj.characters.length; i++){
+        character = lessonObj.characters[i];
+
+        if(i < 9){
+          characterNum = "00" + (i + 1).toString();
+        }else{
+          characterNum = "0" + (i + 1).toString();
+        }
+
+        partOfSpeech = lessonObj.partsOfSpeech[i];
+
+        link = "/vocab/ICL2/" + lesson + "/" + characterNum + ".html";
+        buildRow((i+1).toString(),character, characterNum, partOfSpeech, link);
+      }
     }else{//Something went wrong with the book name
       window.alert("Couldn't find the right book");
       window.history.back();
