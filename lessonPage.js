@@ -98,7 +98,7 @@ function returnToList(){
 
 $(document).ready(function(){
   //Fetch data from the vocab file
-  $.getJSON( "/answers.json", function( data ) {
+  $.getJSON( "/vocabulary.json", function( data ) {
     vocabObj = data;
     pageLoad();
   });
