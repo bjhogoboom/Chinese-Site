@@ -11,8 +11,9 @@ function pageLoad(){
   //Set the global variables
   pathname = window.location.pathname;
   pathArr = pathname.split("/");
-  book = pathArr[2];
-  lesson = pathArr[3];
+  arrLen = pathArr.length;
+  book = pathArr[arrLen - 3];
+  lesson = pathArr[arrLen - 2];
 
   if(infoCheck()){//Global variables are set
 
@@ -21,7 +22,7 @@ function pageLoad(){
     $("#tableTitle").append("Lesson " + lesson + " Vocabulary");
 
     //Get numerical versions of the lesson and word numbers for JSON parsing
-    var lessonNum = parseInt(pathArr[3], 10) - 1;
+    var lessonNum = parseInt(lesson, 10) - 1;
 
     var lessonObj;
     var characterNum;
@@ -43,7 +44,7 @@ function pageLoad(){
 
         partOfSpeech = lessonObj.partsOfSpeech[i];
 
-        link = "/vocab/ICL1/" + lesson + "/" + characterNum + ".html";
+        link = "./" + characterNum + ".html";
         buildRow((i+1).toString(),character, characterNum, partOfSpeech, link);
       }
     }
@@ -60,7 +61,7 @@ function pageLoad(){
 
         partOfSpeech = lessonObj.partsOfSpeech[i];
 
-        link = "/vocab/ICL2/" + lesson + "/" + characterNum + ".html";
+        link = "./" + characterNum + ".html";
         buildRow((i+1).toString(),character, characterNum, partOfSpeech, link);
       }
     }else{//Something went wrong with the book name
@@ -93,12 +94,12 @@ function infoCheck(){
 }
 
 function returnToList(){
-  window.location.pathname = "/vocab/" + book + ".html";
+  window.history.back();
 }
 
 $(document).ready(function(){
   //Fetch data from the vocab file
-  $.getJSON( "/vocabulary.json", function( data ) {
+  $.getJSON( "../../../vocabulary.json", function( data ) {
     vocabObj = data;
     pageLoad();
   });
