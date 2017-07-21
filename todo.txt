@@ -1,17 +1,20 @@
-1. Finish footer for index page
-2. Remove top-level references in JS
-    a. consonantPage.js
-    b. lessonPage.js
-    c. vocabPage.js
-    d. vowelPage.js
-3. Remove top-level references in CVE
-    a. consonants
-    b. vowels
-    c. CVE.html
-4. Remove top-level references in vocab
-    a. ICL1 vocab pages in lesson 01-20
-    b. ICL1 lesson pages 01-20
-    c. ICL1.html
-    d. ICL2 vocab pages in lesson 01-20
-    e. ICL1 lesson pages 01-20
-    f. ICL2.html
+- Finish footer for index page == Complete
+- Remove top-level references in index.html == Complete
+- Remove top-level references in JS (Remember path arrays must be addressed from the back)
+    -- consonantPage.js == Complete
+    -- lessonPage.js == Complete
+    -- vocabPage.js == Complete
+    -- vowelPage.js == Complete
+- Remove top-level references in CVE
+    -- consonant pages
+    -- vowel pages
+    -- consonants.html
+    -- vowels.html
+    -- CVE.html == Complete
+- Remove top-level references in vocab
+    -- ICL1 vocab pages in lesson 01-20
+    -- ICL1 lesson pages 01-20
+    -- ICL1.html
+    -- ICL2 vocab pages in lesson 01-20
+    -- ICL1 lesson pages 01-20
+    -- ICL2.html

@@ -21,14 +21,15 @@ function pageLoad(){
   //Set the global variables
   pathname = window.location.pathname;
   pathArr = pathname.split("/");
-  book = pathArr[2];
-  lesson = pathArr[3];
-  word = pathArr[4].substring(0,3);
+  pathArrLen = pathArr.length;
+  book = pathArr[pathArrLen - 3];
+  lesson = pathArr[pathArrLen - 2];
+  word = pathArr[pathArrLen - 1].substring(0,3);
 
   if(infoCheck()){//Global variables are set
     //Get numerical versions of the lesson and word numbers for JSON parsing
-    var lessonNum = parseInt(pathArr[3], 10) - 1;
-    var wordNum = parseInt(pathArr[4].substring(0,3), 10) - 1;
+    var lessonNum = parseInt(lesson, 10) - 1;
+    var wordNum = parseInt(word, 10) - 1;
 
     //Get the vocab word from the correct book
     if(book === "ICL1"){//Book 1
@@ -88,8 +89,8 @@ function quizLoad(){
   if(infoCheck()){
 
     //Convert the lesson and words to numbers (for JSON parsing)
-    var lessonNum = parseInt(pathArr[3], 10) - 1;
-    var wordNum = parseInt(pathArr[4].substring(0,3), 10) - 1;
+    var lessonNum = parseInt(lesson, 10) - 1;
+    var wordNum = parseInt(word, 10) - 1;
 
     //Get vocab from the right book
     if(book === "ICL1"){//Book 1
@@ -108,7 +109,7 @@ function quizLoad(){
         fileName = fileName + i.toString();
       }
       fileName = fileName + ".mp3";
-      var src = "/audio/" + book + "/" + lesson + "/" + lesson + word + "/" + fileName;
+      var src = "../../../audio/" + book + "/" + lesson + "/" + lesson + word + "/" + fileName;
       var toPush = `<audio controls>
                      <source src="` + src + `" type="audio/mpeg">
                      Your browser does not support the audio element.
@@ -175,13 +176,13 @@ function displayAnswers(){
 }
 
 function returnToLesson(){
-  window.location.pathname = "/vocab/" + book + "/" + lesson + "/lesson" + lesson + ".html";
+  window.history.back();
 }
 
 $(document).ready(function(){
 
   //Fetch data from the vocab file
-  $.getJSON( "/vocabulary.json", function( data ) {
+  $.getJSON( "../../../vocabulary.json", function( data ) {
     vocabObj = data;
     pageLoad();
     quizLoad();

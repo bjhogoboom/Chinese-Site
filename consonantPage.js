@@ -15,7 +15,7 @@ function pageLoad(){
   //Set the global variables
   pathname = window.location.pathname;
   pathArr = pathname.split("/");
-  consonant = pathArr[3].substring(0, pathArr[3].length - 5);
+  consonant = pathArr[pathArr.length - 1].substring(0, pathArr[pathArr.length - 1].length - 5);
 
   //Load the character into the page
   $("#title").append(consonant);
@@ -28,7 +28,7 @@ function audioLoad(){
   var audioElementArray = [];
   for(var i = 1; i < 5; i++){
     var fileName = fileEnding + i.toString() + ".mp3";
-    var src = "/audio/pinyin/Consonants/" + consonant + "/" + fileName;
+    var src = "../../audio/pinyin/Consonants/" + consonant + "/" + fileName;
     var toPush = `<audio controls>
                    <source src="` + src + `" type="audio/mpeg">
                    Your browser does not support the audio element.
@@ -44,7 +44,7 @@ function audioLoad(){
 }
 
 function returnToLesson(){
-  window.location.pathname = "/CVE/consonants/consonants.html";
+  window.history.back();
 }
 
 $(document).ready(function(){

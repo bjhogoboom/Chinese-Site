@@ -15,7 +15,8 @@ function pageLoad(){
   //Set the global variables
   pathname = window.location.pathname;
   pathArr = pathname.split("/");
-  vowel = pathArr[3].substring(0, pathArr[3].length - 5);
+  arrLen = pathArr.length;
+  vowel = pathArr[arrLen - 1].substring(0, pathArr[arrLen - 1].length - 5);
 
   //Load the character into the page
   $("#title").append(vowel);
@@ -28,7 +29,7 @@ function audioLoad(){
   var audioElementArray = [];
   for(var i = 1; i < 5; i++){
     var fileName = fileEnding + i.toString() + ".mp3";
-    var src = "/audio/pinyin/vowels/" + vowel + "/" + fileName;
+    var src = "../../audio/pinyin/vowels/" + vowel + "/" + fileName;
     var toPush = `<audio controls>
                    <source src="` + src + `" type="audio/mpeg">
                    Your browser does not support the audio element.
@@ -44,7 +45,7 @@ function audioLoad(){
 }
 
 function returnToLesson(){
-  window.location.pathname = "/CVE/vowels/vowels.html";
+  window.history.back();
 }
 
 $(document).ready(function(){
