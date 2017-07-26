@@ -1,6 +1,6 @@
 /*
 * @author Ben Hogoboom <bjhogoboom@gmail.com>
-* @version 3/15/2017
+* @version 7/26/2017
 * @summary Core js code for Chinese Department Site
 */
 

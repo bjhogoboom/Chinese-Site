@@ -1,6 +1,6 @@
 /*
 * @author Ben Hogoboom <bjhogoboom@gmail.com>
-* @version 5/12/2017
+* @version 7/26/2017
 * @summary Vowel js code for Chinese Department Site
 */
 

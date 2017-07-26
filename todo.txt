@@ -1,4 +1,4 @@
-ALL TOP LEVEL REFERENCES HAVE BEEN REMOVED
+ALL TOP LEVEL REFERENCES HAVE BEEN REMOVED 7/26/2017
 
 - Finish footer for index page == COMPLETE
 - Remove top-level references in index.html == COMPLETE

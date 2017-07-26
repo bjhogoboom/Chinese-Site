@@ -1,3 +1,8 @@
+/*
+* @author Ben Hogoboom <bjhogoboom@gmail.com>
+* @version 7/26/2017
+* @summary Lesson page js code for Chinese Department Site
+*/
 
 //Info About the quiz word
 var pathname;
