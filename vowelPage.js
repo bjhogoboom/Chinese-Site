@@ -29,7 +29,7 @@ function audioLoad(){
   var audioElementArray = [];
   for(var i = 1; i < 5; i++){
     var fileName = fileEnding + i.toString() + ".mp3";
-    var src = "../../audio/pinyin/vowels/" + vowel + "/" + fileName;
+    var src = "../../audio/pinyin/Vowels/" + vowel + "/" + fileName;
     var toPush = `<audio controls>
                    <source src="` + src + `" type="audio/mpeg">
                    Your browser does not support the audio element.
